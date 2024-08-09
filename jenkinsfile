@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('Checkout') {
             steps {
@@ -9,8 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Building the website...'
-                
+                echo 'Building the website...'                
             }
         }
 
@@ -28,9 +27,6 @@ pipeline {
     }
 
     post {
-        always {
-            echo 'Cleaning up...'
-        }
         success {
             echo 'Deployment succeeded!'
         }
