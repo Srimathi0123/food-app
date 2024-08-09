@@ -1,15 +1,19 @@
-
-
 pipeline {
     agent any
 
     stages {
         stage('Checkout') {
             steps {
-                // Clone the repository
-                git 'https://github.com/Srimathi0123/food-app.git'
+                git 'https://github.com/yourusername/your-repo.git'
             }
         }
+        stage('Build') {
+            steps {
+                echo 'Building the website...'
+                
+            }
+        }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying the website...'
@@ -24,11 +28,14 @@ pipeline {
     }
 
     post {
+        always {
+            echo 'Cleaning up...'
+        }
         success {
-            echo 'Deployment succeeded'
+            echo 'Deployment succeeded!'
         }
         failure {
-            echo 'Deployment failed'
+            echo 'Deployment failed.'
         }
     }
 }
